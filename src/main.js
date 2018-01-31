@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import VueRouter from "vue-router";
-import Vuex from "vuex";
+import VueRouter from 'vue-router';
+import Vuex from 'vuex';
 import Routers from './config/routers';
 
 import App from './components/app.vue';
@@ -22,6 +22,7 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach((to,from,next) => {
   window.scrollTo(0,0);
+  next();
 });
 
 const store = new Vuex.Store({
@@ -40,8 +41,8 @@ const store = new Vuex.Store({
 });
 
 new Vue({
-  el:"#app",
+  el:'#app',
   router:router,
-  store,store,
+  store:store,
   render: h=>h(App)
-})
+});

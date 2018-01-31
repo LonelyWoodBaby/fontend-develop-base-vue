@@ -5,7 +5,7 @@
 export default {
   data() {
     return {
-      indexMessage: "欢迎来到开发首页"
+      indexMessage: '欢迎来到开发首页'
     };
   }
 };

@@ -1,9 +1,11 @@
+import Index from '../views/index';
 const routers = [{
   path: '/',
   meta: {
-      title: '首页'
+    title: '首页'
   },
-  component: (resolve) => require(['../views/index.vue'], resolve)
+  name:'Index',
+  component: Index
 }
 ];
 export default routers;

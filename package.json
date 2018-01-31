@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --open --config webpack.config.js --history-api-fallback",
     "webpack": "webpack --config webpack.config.js --progress --color --display-modules --display-reasons",
-    "build": "webpack --progress --hide-modules --config webpack.prod.config.js"
+    "build": "webpack --progress --hide-modules --config webpack.prod.config.js",
+    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "author": "",
   "license": "ISC",
@@ -19,9 +20,12 @@
     "babel-preset-latest": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "css-loader": "^0.28.9",
+    "eslint-plugin-html": "^4.0.2",
+    "eslint-plugin-vue": "^4.2.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.30.1",
+    "request": "^2.83.0",
     "url-loader": "^0.6.2",
     "vue": "^2.5.13",
     "vue-hot-reload-api": "^2.2.4",
@@ -33,5 +37,10 @@
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.16.0"
   }
 }
