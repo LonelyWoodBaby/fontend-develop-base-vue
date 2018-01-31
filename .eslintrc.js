@@ -3,7 +3,10 @@ module.exports = {
     "parser":"babel-eslint",
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "node":true,
+        "worker":true,
+        "mocha":true
     },
     "extends": "eslint:recommended",
     "parserOptions": {

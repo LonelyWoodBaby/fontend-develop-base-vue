@@ -5,6 +5,8 @@ import Routers from './config/routers';
 
 import App from './components/app.vue';
 
+import './css/style.css';
+
 Vue.use(Vuex);
 Vue.use(VueRouter);
 
@@ -15,14 +17,15 @@ const RouterConfig = {
 };
 
 const router = new VueRouter(RouterConfig);
-router.beforeEach((to, from, next) => {
+
+router.beforeEach((to,from,next) => {
   window.document.title = to.meta.title;
   next();
 });
 
-router.afterEach((to,from,next) => {
+router.afterEach(() => {
   window.scrollTo(0,0);
-  next();
+  //next();
 });
 
 const store = new Vuex.Store({
