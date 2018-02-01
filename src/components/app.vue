@@ -14,7 +14,7 @@
         </li>
       </ul>
     </div>
-    <div class="daily-list">
+    <div class="daily-list" ref="list">
       <template v-if="type === 'recommend'">
         <div v-for="list in recommendList" :key="list.title">
           <div class="daily-date">
@@ -59,6 +59,15 @@ export default {
   mounted() {
     this.getThemes();
     this.getRecommendList();
+    const $list = this.$refs.list;
+    $list.addEventListener('scroll',() =>{
+      if(this.type === 'daily' || this.isLoading)return;
+      if($list.scrollTop + document.body.clientHeight >= $list.scrollHeight){
+        console.log('123123');
+        this.dailyTime -= 86400000;
+        this.getRecommendList();
+      }
+    });
   },
   beforeDestroy() {},
   methods: {
@@ -82,11 +91,12 @@ export default {
       this.getRecommendList();
     },
     getRecommendList (){
+      
       this.isLoading = true;
       const preDay = $.getPreDay(this.dailyTime + 86400000);
-     
+      console.log(preDay);
       $.ajax.get('news/before/' + preDay).then(res =>{
-        console.log(res);
+        console.log('999000');
         this.recommendList.push(res);
         this.isLoading = false;
       });

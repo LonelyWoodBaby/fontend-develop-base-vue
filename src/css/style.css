@@ -6,11 +6,11 @@ html,body{
     font-size: 16px;
 }
 .daily-menu{
-    width: 180px;
+    width: 150px;
     position: fixed;
     top: 0;
-    bottom:0;
-    left:0;
+    bottom: 0;
+    left: 0;
     overflow: auto;
     background: #f5f7f9;
 }
@@ -33,10 +33,10 @@ html,body{
     width: 300px;
     position: fixed;
     top: 0;
-    bottom:0;
-    left:180px;
+    bottom: 0;
+    left: 150px;
     overflow: auto;
-    background: #d7dde4;
+    border-right: 1px solid #d7dde4;
 }
 .daily-item{
     display: block;
@@ -45,7 +45,7 @@ html,body{
     padding: 16px;
     overflow: hidden;
     cursor: pointer;
-    transition: all .3s ease-in-out
+    transition: all .3s ease-in-out;
 }
 .daily-item:hover{
     background: #e3e8ee;
@@ -73,11 +73,17 @@ html,body{
 .daily-img{
     width: 80px;
     height: 80px;
+    float: left;
+}
+
+.daily-img img{
+    width: 100%;
+    height: 100%;
     border-radius: 3px;
 }
 
 .daily-title{
-    padding: 10px 5px 10px 170px;
+    padding: 10px 5px 10px 90px;
 }
 
 .daily-title.noImg{
