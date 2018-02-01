@@ -15,9 +15,19 @@
       </ul>
     </div>
     <div class="daily-list">
-      <!--
-      <Item></Item>
-      -->
+      <template v-if="type === 'recommend'">
+        <div v-for="list in recommendList" :key="list.title">
+          <div class="daily-date">
+            {{formartDay(list.date)}}
+          </div>
+          <Item v-for="item in list.stories" :data="item" :key="item.id"></Item>
+        </div>
+      </template>
+      <template v-if="type === 'daily'">
+        <Item v-for="item in list" :key="item.id" :data="item"></Item>
+      </template>
+      
+
     </div>
     <!--
     <dialy-artcile></dialy-artcile>
@@ -26,7 +36,11 @@
 </template>
 <script>
 import $ from '../libs/util.js';
+import Item from '../components/item.vue';
 export default {
+  components:{
+    Item:Item
+  },
   data() {
     return {
       themes:[],
@@ -76,6 +90,13 @@ export default {
         this.recommendList.push(res);
         this.isLoading = false;
       });
+    },
+    formartDay (date){
+      let month = date.substr(4,2);
+      let day = date.substr(6,2);
+      if(month.substr(0,1) === '0')month = month.substr(1,1);
+      if(day.substr(0,1) === '0')day = day.substr(1,1);
+      return `${month}月${day}日`;
     }
   }
 };
