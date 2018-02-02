@@ -20,26 +20,28 @@
           <div class="daily-date">
             {{formartDay(list.date)}}
           </div>
-          <Item v-for="item in list.stories" :data="item" :key="item.id"></Item>
+          <Item v-for="item in list.stories" :data="item" :key="item.id" @click.native="handleClick(item.id)"></Item>
         </div>
       </template>
       <template v-if="type === 'daily'">
-        <Item v-for="item in list" :key="item.id" :data="item"></Item>
+        <Item v-for="item in list" :key="item.id" :data="item" @click.native="handleClick(item.id)"></Item>
       </template>
-      
-
     </div>
     <!--
     <dialy-artcile></dialy-artcile>
     -->
+    <daily-artcile :id="artcileId"></daily-artcile>
   </div>
 </template>
 <script>
 import $ from '../libs/util.js';
 import Item from '../components/item.vue';
+import dailyArtcile from '../components/daily-article.vue';
+
 export default {
   components:{
-    Item:Item
+    Item:Item,
+    dailyArtcile:dailyArtcile
   },
   data() {
     return {
@@ -52,7 +54,8 @@ export default {
 
       recommendList:[],
       dailyTime:$.getTodayTime(),
-      isLoading:false
+      isLoading:false,
+      artcileId:0
 
     };
   },
@@ -107,6 +110,9 @@ export default {
       if(month.substr(0,1) === '0')month = month.substr(1,1);
       if(day.substr(0,1) === '0')day = day.substr(1,1);
       return `${month}月${day}日`;
+    },
+    handleClick(id){
+      this.artcileId = id;
     }
   }
 };
